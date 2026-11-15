@@ -12,6 +12,8 @@ rules live in `~/.claude/CLAUDE.md`; this file only adds project specifics.
   the textbook must say so in `source` (e.g. "教材外補充").
 - `verify` (optional) points the learner to a K-Line practice step where they can confirm
   the concept in a real terminal.
+- `docs/outline.md` plans every section of the MVP parts. Before writing a part, turn its
+  slice of the outline into `plan.md` (the Part 1 `plan.md` shows the shape; replace it, git keeps the old one).
 
 ## Section rules
 
@@ -32,4 +34,7 @@ rules live in `~/.claude/CLAUDE.md`; this file only adds project specifics.
 - Branch slug: `DS-NNN-<title-kebab>`. One PR per part (篇) when adding sections.
 - Commit gate: `npm run typecheck && npm test && npm run build`. For UI changes, also check
   the page in a browser (light, dark, and phone width).
+- Browser QA: with `npx vite preview --port 4317` running, `node scripts/qa-ch.cjs
+  scripts/qa/<part>.json` walks every step, solves every question, and screenshots to
+  `qa-shots/`. Add an answers file per part; then look at the screenshots.
 - Deploy: `npm run deploy` publishes to the `gh-pages` branch (GitHub Pages).

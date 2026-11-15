@@ -1,0 +1,188 @@
+[
+  {
+    "id": "why-containers",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 2
+      }
+    ]
+  },
+  {
+    "id": "image-container-registry",
+    "steps": 4,
+    "q": [
+      {
+        "order": [
+          "docker pull",
+          "docker run",
+          "docker commit",
+          "docker push"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "image-layers-cow",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "容器可寫層"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "vm-vs-container",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "docker-architecture",
+    "steps": 5,
+    "q": [
+      {
+        "order": [
+          "docker（CLI）",
+          "dockerd",
+          "containerd",
+          "runc",
+          "Linux kernel"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "first-container",
+    "steps": 5,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "desktop-vs-engine",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "install-docker-ce",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "docker-group-root",
+    "steps": 4,
+    "q": [
+      {
+        "order": [
+          "sudo usermod -aG docker $USER",
+          "登出再登入",
+          "docker ps 確認可以用"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "run-flags",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "pick": [
+          "--rm"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "observe-containers",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "exec-not-ssh",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "tags-and-digest",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "pick": [
+          "    image: postgres:latest"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "commit-export-prune",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 0
+      }
+    ]
+  }
+]
