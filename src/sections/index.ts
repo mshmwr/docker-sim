@@ -1,4 +1,9 @@
 import type { Section } from '../core/types';
+import { ghostFiles } from './ghost-files';
+import { goScratch } from './go-scratch';
+import { measureThenOptimize } from './measure-then-optimize';
+import { registryMirrorProxy } from './registry-mirror-proxy';
+import { reorderLayersRuby } from './reorder-layers-ruby';
 import { buildContextDockerignore } from './build-context-dockerignore';
 import { buildxMultiplatform } from './buildx-multiplatform';
 import { cmdVsEntrypoint } from './cmd-vs-entrypoint';
@@ -44,6 +49,11 @@ export const SECTIONS: Section[] = [
   layerCache,
   multiStage,
   buildxMultiplatform,
+  measureThenOptimize,
+  reorderLayersRuby,
+  registryMirrorProxy,
+  ghostFiles,
+  goScratch,
   minimalBaseNoSecrets,
 ];
 
