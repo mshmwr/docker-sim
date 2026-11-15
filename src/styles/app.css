@@ -707,6 +707,56 @@ h2 {
   content: none;
 }
 
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.flow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.flow-node {
+  display: inline-flex;
+  flex-direction: column;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+.flow-node small,
+.flow-link small {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.flow-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--muted);
+  line-height: 1.2;
+}
+/* Arrows have no box, so tones colour the text instead of filling a background. */
+.flow-link.t-good,
+.flow-link.t-bad,
+.flow-link.t-focus {
+  background: none !important;
+}
+.flow-link.t-good {
+  color: var(--good);
+}
+.flow-link.t-bad {
+  color: var(--bad);
+}
+.flow-link.t-focus {
+  color: var(--focus);
+}
+
 .tbl {
   width: 100%;
   border-collapse: collapse;

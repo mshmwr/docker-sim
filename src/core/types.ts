@@ -14,6 +14,8 @@ export type Layer =
   | { kind: 'terminal'; label?: string; lines: Line[] }
   | { kind: 'file'; label?: string; name: string; lines: Line[] }
   | { kind: 'layers'; label?: string; items: Line[] }
+  /** Nodes joined by arrows; `links[i]` labels the arrow from `nodes[i]` to `nodes[i + 1]`. */
+  | { kind: 'flow'; label?: string; nodes: Line[]; links?: { text?: string; tone?: Tone }[] }
   | { kind: 'table'; label?: string; head: string[]; rows: { cells: string[]; tone?: Tone }[] };
 
 export interface Step {
