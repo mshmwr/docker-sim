@@ -800,6 +800,7 @@ h2 {
 .tbl th,
 .tbl td {
   text-align: left;
+  overflow-wrap: anywhere;
   padding: 8px 10px;
   border-bottom: 1px solid var(--border);
 }
