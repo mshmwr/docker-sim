@@ -51,7 +51,7 @@ export const dockerArchitecture: Section = {
           ],
         },
       ],
-      note: 'Client 還在，Server 段出不來：代表 daemon 沒在跑，或你沒權限連到它。這是初學者遇到的第一個經典坑。',
+      note: 'Client 還在，Server 段出不來：代表 daemon 沒在跑（沒權限時訊息會是 permission denied，見 2-3）。這是初學者遇到的第一個經典坑。',
     },
     {
       scene: [

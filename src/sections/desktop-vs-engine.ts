@@ -5,7 +5,7 @@ export const desktopVsEngine: Section = {
   num: '2-1',
   chapter: 2,
   title: 'Docker Desktop 其實是一台 VM',
-  concept: 'Docker 引擎只能跑在 Linux kernel 上；Mac 和 Windows 的 Docker Desktop 會在背景開一台 Linux VM，容器其實跑在那台 VM 裡。',
+  concept: 'Linux 容器需要 Linux kernel；Mac 和 Windows 的 Docker Desktop 會在背景開一台 Linux VM，容器其實跑在那台 VM 裡。',
   steps: [
     {
       scene: [
@@ -93,6 +93,6 @@ export const desktopVsEngine: Section = {
       explain: '容器跑在 VM 裡，-m 只是在 VM 內設上限。VM 本身只有 4 GB，所有容器加起來都超不過它。要更多就去 Resources 調大 VM。',
     },
   ],
-  source: '教材 §2.1、§2.10 坑四、坑五',
+  source: '教材 §2.1、§2.10 坑五、坑六',
   verify: 'K-Line 練習第 1 章：Apple Silicon 上 docker build -t kline-lab:native . 失敗（EBADPLATFORM），正是 VM 為 arm64 的直接後果。',
 };

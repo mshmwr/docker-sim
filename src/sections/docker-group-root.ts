@@ -35,7 +35,7 @@ export const dockerGroupRoot: Section = {
           ],
         },
       ],
-      note: '加進群組後，要登出再登入（或重開終端機）才會生效。這是初學者最常忘的一步：繼續 permission denied，就以為自己裝壞了。',
+      note: '加進群組後，要登出再登入才會生效（或在目前的 shell 執行 newgrp docker 暫時生效）。這是初學者最常忘的一步：繼續 permission denied，就以為自己裝壞了。',
     },
     {
       scene: [
@@ -86,5 +86,5 @@ export const dockerGroupRoot: Section = {
       explain: '群組成員能指揮以 root 執行的 dockerd，把主機任何目錄掛進容器。所以 docker 群組要當系統管理員權限來管。',
     },
   ],
-  source: '教材 §2.4、§2.6、§2.7、§2.10 坑二',
+  source: '教材 §2.4、§2.6、§2.7、§2.10 坑二（newgrp 為教材外補充）',
 };

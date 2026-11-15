@@ -21,7 +21,7 @@ export const observeContainers: Section = {
           ],
         },
       ],
-      note: 'docker ps 只列正在跑的。主指令 ls 印完就結束，容器已經停了，要加 -a 才看得到。這是初學者最常問的「容器不見了」。',
+      note: 'docker ps 只列正在跑的。主程式 ls 印完就結束，容器已經停了，要加 -a 才看得到。這是初學者最常問的「容器不見了」。',
     },
     {
       scene: [
@@ -73,7 +73,7 @@ export const observeContainers: Section = {
       prompt: '執行 docker run --name job ubuntu ls 之後，馬上打 docker ps。看得到 job 嗎？',
       options: ['看得到，狀態是 Up', '看不到，它已經結束，要用 docker ps -a', '看不到，它已經被自動刪除'],
       answer: 1,
-      explain: '主指令 ls 印完就結束，容器變成 Exited。docker ps 只列正在跑的，要 -a 才看得到。沒加 --rm，所以它還在。',
+      explain: '主程式 ls 印完就結束，容器變成 Exited。docker ps 只列正在跑的，要 -a 才看得到。沒加 --rm，所以它還在。',
     },
     {
       type: 'choice',

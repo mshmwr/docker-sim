@@ -22,7 +22,7 @@ The "Questions" column uses the app's three question types: `choice`, `pick` and
 | 1-3 | `image-layers-cow` | 分層與寫時複製 | An image is a stack of read-only layers; a container adds one writable layer that dies with `rm`. | pick: which layer a modified base file is written to; choice: file survives `rm` + new `run`? |
 | 1-4 | `vm-vs-container` | VM 與容器：共用核心 | VMs each carry a kernel; containers share the host's. Lighter and faster, but a thinner wall. | choice: `uname -r` inside a container; choice: 512MB limit → cgroups |
 | 1-5 | `docker-architecture` | 一行指令經過誰 | The CLI is a remote; dockerd → containerd → runc → kernel do the work. | order: the component chain; choice: daemon down → which half of `docker version` fails |
-| 1-6 | `first-container` | 第一個容器與 `-p` | `run` pulls if missing; only `-p host:container` lets the host reach it. | choice: nginx without `-p`; pick: which number in `-p 8080:80` is the container port |
+| 1-6 | `first-container` | 第一個容器與 `-p` | `run` pulls if missing; only `-p host:container` lets the host reach it. | choice: nginx without `-p`; choice: which number in `-p 8080:80` is the container port |
 
 ### ch2 安裝與權限 (3)
 

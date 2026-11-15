@@ -54,7 +54,7 @@ export const imageLayersCow: Section = {
           ],
         },
       ],
-      note: '這叫寫時複製（copy-on-write）：要改底層的檔案時，先把它複製到可寫層再改，底層永遠不動。這也是為什麼建 image 時沒變的層可以直接用快取。',
+      note: '這叫寫時複製（copy-on-write）：要改底層的檔案時，先把它複製到可寫層再改，底層永遠不動。這也是為什麼底層可以被很多容器、很多 image 共用。',
     },
     {
       scene: [

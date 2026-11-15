@@ -52,10 +52,10 @@ export const installDockerCe: Section = {
             { text: 'docker-ce-cli', note: '新版', tone: 'focus' },
             { text: 'docker-ce', note: '舊版', tone: 'bad' },
           ],
-          links: [{ text: 'API 版本對不上', tone: 'bad' }],
+          links: [{ text: '版本對不上', tone: 'bad' }],
         },
       ],
-      note: 'Client 和 Server 透過 REST API 講話。只升其中一個，兩邊的版本和 API version 就會對不上，出現詭異的相容問題。升級時重跑同一行 apt-get install，讓五個一起到同一版。',
+      note: 'Client 和 Server 透過 REST API 講話。只升其中一個，兩邊版本對不上，容易出現詭異的相容問題。升級時重跑同一行 apt-get install，讓五個一起到同一版。',
     },
     {
       scene: [
@@ -80,7 +80,7 @@ export const installDockerCe: Section = {
       prompt: '你只升級了 docker-ce-cli，沒升級 docker-ce。執行 docker version 最可能看到什麼？',
       options: [
         '只有 Client 段，Server 段消失',
-        'Client 與 Server 的版本（含 API version）不一致',
+        'Client 的版本比 Server 新，兩段對不上',
         '兩段完全一樣，CLI 會自動帶著引擎一起升',
       ],
       answer: 1,

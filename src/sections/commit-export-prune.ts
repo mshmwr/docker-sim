@@ -14,11 +14,13 @@ export const commitExportPrune: Section = {
           lines: [
             { text: '$ docker run -it --name temp ubuntu bash' },
             { text: 'root@…:/# apt-get update && apt-get install -y wget' },
+            { text: 'root@…:/# rm /root/.profile' },
             { text: 'root@…:/# exit' },
-            { text: '$ docker diff temp' },
+            { text: '$ docker diff temp', note: '節錄，實際會列很多行' },
             { text: 'C /usr/bin', tone: 'focus', note: 'C = 修改' },
             { text: 'A /usr/bin/wget', tone: 'good', note: 'A = 新增' },
-            { text: 'D /tmp/apt.lock', tone: 'bad', note: 'D = 刪除' },
+            { text: 'C /root', tone: 'focus' },
+            { text: 'D /root/.profile', tone: 'bad', note: 'D = 刪除' },
           ],
         },
       ],
@@ -64,7 +66,7 @@ export const commitExportPrune: Section = {
           ],
         },
       ],
-      note: 'prune 清掉停掉的容器、沒用的網路和懸空的 image。加 -a 會連「沒有容器在用」的 image 也刪，下手前想一下還要不要。',
+      note: 'prune 清掉停掉的容器、沒用的網路和懸空的 image，也會清掉沒在用的建置快取；volume 預設不刪（教材外補充）。加 -a 會連「沒有容器在用」的 image 也刪，下手前想一下還要不要。',
     },
   ],
   questions: [
@@ -83,5 +85,5 @@ export const commitExportPrune: Section = {
       explain: 'export 把容器的整個檔案系統打包成一個 tar，import 回來就是壓平的一層，原本的分層歷史都沒了。要保留分層得用 save / load。',
     },
   ],
-  source: '教材 §3.8、§3.9、§3.10、§3.11',
+  source: '教材 §3.8、§3.9、§3.10、§3.11（export/import 會丟失 CMD、ENV，以及 prune 清建置快取、不刪 volume，為教材外補充）',
 };

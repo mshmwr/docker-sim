@@ -7,7 +7,7 @@ export const runFlags: Section = {
   num: '3-1',
   chapter: 3,
   title: 'docker run 常用旗標',
-  concept: '容器的生命跟它的主指令綁在一起；-d、-it、--name、-p、--rm、--restart、-m 決定它怎麼跑、怎麼收。',
+  concept: '容器的生命跟它的主程式綁在一起；-d、-it、--name、-p、--rm、--restart、-m 決定它怎麼跑、怎麼收。',
   steps: [
     {
       scene: [
@@ -24,7 +24,7 @@ export const runFlags: Section = {
           ],
         },
       ],
-      note: '-i 讓容器收得到鍵盤，-t 給一個像樣的終端機，兩個一起用才能在裡面打指令。這個容器的主指令是 bash，所以 exit 一離開，bash 結束，容器也停了。',
+      note: '-i 讓容器收得到鍵盤，-t 給一個像樣的終端機，兩個一起用才能在裡面打指令。這個容器的主程式是 bash，所以 exit 一離開，bash 結束，容器也停了。',
     },
     {
       scene: [
@@ -32,7 +32,7 @@ export const runFlags: Section = {
           kind: 'table',
           head: ['跑法', '適合'],
           rows: [
-            { cells: ['前景（不加 -d）', '想看即時輸出、跑一次就結束的指令。Ctrl+C 會連容器一起停'] },
+            { cells: ['前景（不加 -d）', '想看即時輸出、跑一次就結束的指令。Ctrl+C 通常會連容器一起停'] },
             { cells: ['背景（-d）', '網站、資料庫這類會一直待著的服務'], tone: 'good' },
           ],
         },
@@ -44,7 +44,7 @@ export const runFlags: Section = {
           ],
         },
       ],
-      note: 'docker run ubuntu ls 印完就停，docker run nginx 會一直活著，差別只在主指令會不會自己結束。',
+      note: 'docker run ubuntu ls 印完就停，docker run nginx 會一直活著，差別只在主程式會不會自己結束。',
     },
     {
       scene: [
@@ -101,6 +101,6 @@ export const runFlags: Section = {
       explain: '--rm 讓容器停止後自動刪除。它和 -d 一起用沒問題（Docker 1.13 起）。',
     },
   ],
-  source: '教材 §3.1、§3.2（教材說 --rm 不能和 -d 並用，Docker 1.13 起已可並用）',
+  source: '教材 §3.1、§3.2（教材說 --rm 不能和 -d 並用，Docker 1.13 起已可並用；always 遇手動 stop 的行為為教材外補充）',
   verify: 'K-Line 練習第 2 章：docker run -d --name kline --platform linux/amd64 -p 8000:8000 kline-lab:v1。',
 };
