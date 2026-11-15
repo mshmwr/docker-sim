@@ -1,4 +1,9 @@
 import type { Section } from '../core/types';
+import { buildContextDockerignore } from './build-context-dockerignore';
+import { buildxMultiplatform } from './buildx-multiplatform';
+import { cmdVsEntrypoint } from './cmd-vs-entrypoint';
+import { dockerfileInstructions } from './dockerfile-instructions';
+import { multiStage } from './multi-stage';
 import { commitExportPrune } from './commit-export-prune';
 import { desktopVsEngine } from './desktop-vs-engine';
 import { dockerArchitecture } from './docker-architecture';
@@ -33,7 +38,12 @@ export const SECTIONS: Section[] = [
   lifecycleStopKill,
   tagsAndDigest,
   commitExportPrune,
+  dockerfileInstructions,
+  cmdVsEntrypoint,
+  buildContextDockerignore,
   layerCache,
+  multiStage,
+  buildxMultiplatform,
   minimalBaseNoSecrets,
 ];
 
