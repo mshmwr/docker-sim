@@ -1,4 +1,10 @@
 import type { Section } from '../core/types';
+import { composeDeclarative } from './compose-declarative';
+import { composeLifecycle } from './compose-lifecycle';
+import { dependsOnHealthcheck } from './depends-on-healthcheck';
+import { envOverrideProfiles } from './env-override-profiles';
+import { networksExposePorts } from './networks-expose-ports';
+import { serviceNameDns } from './service-name-dns';
 import { ghostFiles } from './ghost-files';
 import { goScratch } from './go-scratch';
 import { measureThenOptimize } from './measure-then-optimize';
@@ -54,6 +60,12 @@ export const SECTIONS: Section[] = [
   registryMirrorProxy,
   ghostFiles,
   goScratch,
+  composeDeclarative,
+  serviceNameDns,
+  dependsOnHealthcheck,
+  networksExposePorts,
+  envOverrideProfiles,
+  composeLifecycle,
   minimalBaseNoSecrets,
 ];
 
