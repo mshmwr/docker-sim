@@ -59,6 +59,24 @@ function LayerView({ layer }: { layer: Layer }) {
           ))}
         </div>
       );
+    case 'flow':
+      return (
+        <div className="flow">
+          {layer.nodes.map((n, i) => (
+            <span key={i} className="flow-wrap">
+              {i > 0 && (
+                <span className={`flow-link${tc(layer.links?.[i - 1]?.tone)}`}>
+                  {layer.links?.[i - 1]?.text && <small>{layer.links[i - 1].text}</small>}→
+                </span>
+              )}
+              <span className={`flow-node${tc(n.tone)}`}>
+                {n.text}
+                {n.note && <small>{n.note}</small>}
+              </span>
+            </span>
+          ))}
+        </div>
+      );
     case 'table':
       return (
         <table className="tbl">
