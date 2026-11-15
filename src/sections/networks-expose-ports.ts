@@ -11,7 +11,7 @@ export const networksExposePorts: Section = {
       scene: [
         {
           kind: 'file',
-          name: 'compose.yaml',
+          name: 'compose.yaml（節錄）',
           lines: [
             { text: 'services:' },
             { text: '  proxy:' },
@@ -101,6 +101,6 @@ export const networksExposePorts: Section = {
       explain: 'expose 不是存取控制，同一個網路上的容器能連到對方任何正在聽的埠。真正擋得住的是「不在同一個網路」（教材外補充）。',
     },
   ],
-  source: '教材 §6.6 networks、expose 與 ports（expose 不做存取控制為教材外補充）',
+  source: '教材 §6.6（教材說 expose 只對同網路容器開埠，實際上 expose 不做任何存取控制，依現行 Docker 行為修正）',
   verify: 'K-Line 練習第 8 章：emulator 綁在 127.0.0.1:8080:8080，拿掉 127.0.0.1 同網段的人就能讀寫。',
 };

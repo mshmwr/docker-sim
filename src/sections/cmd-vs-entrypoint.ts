@@ -84,14 +84,14 @@ export const cmdVsEntrypoint: Section = {
   questions: [
     {
       type: 'choice',
-      prompt: 'Dockerfile 只有 ENTRYPOINT ["echo", "hi"]。執行 docker run img bye，會印出什麼？',
+      prompt: 'Dockerfile 是 FROM alpine 加上一行 ENTRYPOINT ["echo", "hi"]。執行 docker run img bye，會印出什麼？',
       options: ['bye', 'hi bye', 'hi'],
       answer: 1,
       explain: 'run 後面的 bye 會接在 ENTRYPOINT 後面，實際執行的是 echo hi bye。',
     },
     {
       type: 'choice',
-      prompt: 'Dockerfile 只有 CMD ["echo", "hi"]。執行 docker run img bye，結果？',
+      prompt: 'Dockerfile 是 FROM alpine 加上一行 CMD ["echo", "hi"]。執行 docker run img bye，結果？',
       options: ['印出 hi bye', '印出 bye', '報錯：找不到 bye 這個執行檔'],
       answer: 2,
       explain: '後面的 bye 整個取代 CMD，Docker 試著執行一個叫 bye 的程式，找不到就報 executable file not found。',

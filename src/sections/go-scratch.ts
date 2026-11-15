@@ -67,7 +67,7 @@ export const goScratch: Section = {
           items: [
             { text: '單階段 golang', value: 500, shown: '500 多 MB', tone: 'bad' },
             { text: '手動 scratch + .so', value: 8, shown: '不到 8 MB' },
-            { text: 'multi-stage + scratch', value: 5.6, shown: '約 5.6 MB', tone: 'good' },
+            { text: 'multi-stage + scratch', value: 5.6, shown: '幾 MB', tone: 'good' },
           ],
         },
       ],
@@ -90,5 +90,5 @@ export const goScratch: Section = {
       explain: 'scratch 是完全空白的基底，裡面只有你 COPY 進去的執行檔，沒有 sh。這讓除錯麻煩一點，但也讓攻擊者無工具可用。',
     },
   ],
-  source: '教材 §5.4 第二招、§5.6（教材說 Go 預設編出動態執行檔；實際上純 Go 程式本來就是靜態的，用到 net、os/user 且 cgo 開著時才會動態連結 libc）',
+  source: '教材 §5.4 第二招、§5.6（golang:1.22 沿用教材版本，實作請用目前支援的版本；教材說 Go 預設編出動態執行檔；實際上純 Go 程式本來就是靜態的，用到 net、os/user 且 cgo 開著時才會動態連結 libc）',
 };

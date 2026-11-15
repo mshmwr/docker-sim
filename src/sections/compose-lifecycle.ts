@@ -95,5 +95,5 @@ export const composeLifecycle: Section = {
     },
   ],
   source: '教材 §6.7、§6.8（down 與 down -v 為教材範例）',
-  verify: 'K-Line 練習第 8 章收尾：docker compose -f compose.lab.yaml down -v。',
+  verify: 'K-Line 練習第 8 章收尾 down -v；那份 compose 沒宣告 volume，所以 -v 沒差，正好對照本節有 volume 的情況。',
 };

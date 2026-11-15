@@ -70,7 +70,7 @@ export const pushLoginLayers: Section = {
   questions: [
     {
       type: 'pick',
-      prompt: 'user/app:1.0 已經推過。改了程式碼重新 build 成 1.1（層順序是對的），push 時哪些層會真的上傳？（選出全部）',
+      prompt: 'user/app:1.0 已經推過。改了程式碼，在同一台有快取的 builder 上重新 build 成 1.1（層順序是對的），push 時哪些層會真的上傳？（選出全部）',
       items: LAYERS,
       answer: [3],
       explain: '只有內容變了的層才有新的 digest。基底、python、pip install 這幾層和 1.0 一模一樣，registry 已經有了，直接跳過。',

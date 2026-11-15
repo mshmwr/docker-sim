@@ -67,7 +67,7 @@ export const reorderLayersRuby: Section = {
           links: [{ text: '只拉 COPY . . 那層', tone: 'good' }],
         },
       ],
-      note: '順便也省了部署。正式主機上已經有下面那幾層，推新版時只要拉變動的最後一層，不用重抓整包套件。',
+      note: '順便也省了部署。在有快取的同一台 builder 上建，下面那幾層的內容不變；正式主機上早就有它們，推新版時只要拉變動的最後一層，不用重抓整包套件。',
     },
   ],
   questions: [
@@ -87,5 +87,5 @@ export const reorderLayersRuby: Section = {
     },
   ],
   source: '教材 §5.3 第一招（原範例的 ADD . /app 改寫為 COPY . .；80 倍為教材數字）',
-  verify: 'K-Line 練習第 4 章 4-B：先 COPY frontend/package*.json 再 npm ci，修好 lockfile 後重新 build 成功。',
+  verify: 'K-Line 練習第 4 章 4-A：改 backend/main.py 再 build，pip install 那層顯示 CACHED；改前端程式則 npm ci CACHED、只有 npm run build 重跑。',
 };

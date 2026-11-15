@@ -31,7 +31,7 @@ export const buildxMultiplatform: Section = {
         },
         { kind: 'terminal', lines: [{ text: 'exec /usr/local/bin/python: exec format error', tone: 'bad' }] },
       ],
-      note: '沒指定平台時，image 預設跟建置機器同架構。arm64 的執行檔丟到 amd64 的 CPU 上跑不起來，錯誤就是 exec format error。',
+      note: '沒指定平台時，image 預設跟建置機器同架構。arm64 的執行檔丟到 amd64 的 CPU 上跑不起來：執行時是 exec format error，有時 pull 就先失敗，說找不到 linux/amd64 版。不只執行時：build 過程中如果裝了只給某個 CPU 用的套件（例如名稱帶 linux-x64 的 npm 套件），換到 arm64 上 build 就會失敗。',
     },
     {
       scene: [
@@ -83,9 +83,9 @@ export const buildxMultiplatform: Section = {
     {
       type: 'choice',
       prompt: '在 Apple Silicon Mac 上 docker build（沒加 --platform），推上 registry，再到一台沒裝模擬器的 x86 主機 docker run。結果？',
-      options: ['正常執行', '架構不符，出現 exec format error', 'Docker 會自動轉成 amd64'],
+      options: ['正常執行', '架構不符跑不起來（pull 時找不到 linux/amd64 版，或執行時 exec format error）', 'Docker 會自動轉成 amd64'],
       answer: 1,
-      explain: 'image 預設跟建置的機器同架構，這裡是 arm64。x86 主機執行不了 arm64 的程式，就回 exec format error。要嘛建時加 --platform linux/amd64，要嘛用 buildx 建多平台。',
+      explain: 'image 預設跟建置的機器同架構，這裡是 arm64。x86 主機執行不了 arm64 的程式：可能 pull 時就找不到 amd64 版，或跑起來回 exec format error。要嘛建時加 --platform linux/amd64，要嘛用 buildx 建多平台。',
     },
     {
       type: 'pick',

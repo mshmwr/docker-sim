@@ -96,6 +96,6 @@ export const composeDeclarative: Section = {
       explain: 'Compose 只管它所在的那一台主機。跨主機排程和故障轉移要交給編排工具。',
     },
   ],
-  source: '教材 §6.1、§6.3、§6.5、§6.9',
+  source: '教材 §6.1、§6.3、§6.5、§6.9、§6.10',
   verify: 'K-Line 練習第 8 章：docker compose -f compose.lab.yaml up -d --build 一次起好後端和 Firestore emulator。',
 };

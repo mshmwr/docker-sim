@@ -40,7 +40,7 @@ export const buildContextDockerignore: Section = {
           ],
         },
       ],
-      note: 'BuildKit 的輸出會寫 transferring context，後面就是送了多少。教材裡的 Sending build context to Docker daemon 是舊版 builder 的寫法。這一步跟快取無關，每次 build 都要做。',
+      note: 'BuildKit 的輸出會寫 transferring context，後面就是送了多少。BuildKit 會記住上次送過的內容，同一台 builder 再 build 只補送有變的檔案；但第一次 build、或每次從零開始的 CI runner，還是得整包送。教材的 Sending build context… 是舊版 builder 的寫法。',
     },
     {
       scene: [
@@ -50,13 +50,13 @@ export const buildContextDockerignore: Section = {
           lines: [
             { text: '.git', note: '版控歷史，build 用不到' },
             { text: 'node_modules', note: '容器裡會自己裝' },
-            { text: '.env', tone: 'bad', note: '機密，一定要排除' },
-            { text: '*.md', note: '排除所有 md' },
+            { text: '**/.env', tone: 'bad', note: '機密，每一層資料夾都要排除' },
+            { text: '*.md', note: '排除根目錄的 md' },
             { text: '!README.md', tone: 'good', note: '例外：README 留著' },
           ],
         },
       ],
-      note: '寫法跟 .gitignore 很像：一行一條規則，* 是萬用字元，! 是例外。.env 常放密碼，送進 context 再被 COPY . . 帶進 image，拿到 image 的人都讀得到。',
+      note: '寫法跟 .gitignore 很像：一行一條規則，* 是萬用字元，! 是例外。但有一點不同：規則從 context 根目錄算起，*.md、.env 只管根目錄那層，要涵蓋子資料夾得寫 **/*.md、**/.env。.env 常放密碼，送進 context 再被 COPY 帶進 image，拿到 image 的人都讀得到。',
     },
     {
       scene: [
@@ -70,7 +70,7 @@ export const buildContextDockerignore: Section = {
         },
         {
           kind: 'terminal',
-          lines: [{ text: '$ docker build -t app .' }, { text: 'ERROR: failed to compute cache key: "/README.md": not found', tone: 'bad' }],
+          lines: [{ text: '$ docker build -t app .' }, { text: 'ERROR: failed to solve: failed to compute cache key: … "/README.md": not found', tone: 'bad' }],
         },
       ],
       note: '規則由上往下比對，最後一條符合的說了算。! 例外要寫在它要救的那條規則後面，否則被後面的 *.md 又排除，COPY README.md 就找不到檔案。',
@@ -82,7 +82,7 @@ export const buildContextDockerignore: Section = {
       prompt: '用下面這份 .dockerignore，Dockerfile 的 COPY README.md / 失敗，說 "/README.md": not found。是哪一行造成的？',
       items: ['.git', 'node_modules', '.env', '*.md'],
       answer: [3],
-      explain: '*.md 把所有 md 檔排除了，README.md 根本沒被送進 context。要在它後面加一行 !README.md 把它救回來。',
+      explain: '*.md 把根目錄的 md 檔都排除了，README.md 沒被送進 context。要在它後面加一行 !README.md 把它救回來。',
     },
     {
       type: 'choice',
@@ -92,6 +92,6 @@ export const buildContextDockerignore: Section = {
       explain: 'Docker 不讀 .gitignore。.env 沒寫在 .dockerignore，就會被送進 context，再被 COPY . . 複製進 image。',
     },
   ],
-  source: '教材 §4.5、§4.7、§5.3 第二招（輸出改為現行 BuildKit 格式；context 大小為示意）',
+  source: '教材 §4.5、§4.7、§5.3 第二招（輸出與增量傳送改為現行 BuildKit 行為；規則從根目錄比對、**/ 寫法為教材外補充；context 大小為示意）',
   verify: 'K-Line 練習第 3 章：拿掉 .dockerignore 的 !README.md 再 build，會失敗在 "/README.md": not found；6-C 用 COPY 把 .env 帶進 image。',
 };

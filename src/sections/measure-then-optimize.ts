@@ -5,7 +5,7 @@ export const measureThenOptimize: Section = {
   num: '5-1',
   chapter: 5,
   title: '先量，再依 ROI 排優先',
-  concept: '最佳化有兩條線：建得快、image 小。先量出瓶頸，再從成本最低、效果最大的招式做起。',
+  concept: '最佳化有三個目標：建得快、傳得快、image 小。先量出瓶頸，再從成本最低、效果最大的招式做起。',
   steps: [
     {
       scene: [
@@ -30,7 +30,7 @@ export const measureThenOptimize: Section = {
             { text: 'REPOSITORY   TAG   IMAGE ID       SIZE', tone: 'dim' },
             { text: 'kline-lab    v1    3f2a…          712MB', tone: 'focus' },
             { text: '$ docker history kline-lab:v1 --format "{{.Size}}  {{.CreatedBy}}"' },
-            { text: '437MB   RUN pip install --no-cache-dir -r requirements.txt', tone: 'bad', note: '最肥的一層' },
+            { text: '437MB   RUN /bin/sh -c pip install --no-cache-dir -r … # buildkit', tone: 'bad', note: '最肥的一層' },
             { text: '1.3MB   COPY /frontend/dist ./static # buildkit' },
             { text: '…' },
           ],

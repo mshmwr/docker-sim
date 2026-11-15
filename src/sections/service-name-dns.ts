@@ -25,7 +25,7 @@ export const serviceNameDns: Section = {
           ],
         },
       ],
-      note: 'docker compose up 會建一個 myproj_default 網路，把所有服務接上去。Docker 內建的 DNS 會把服務名 redis 解析成 redis 容器的 IP。',
+      note: 'docker compose up 會建一個 myproj_default 網路，把所有服務接上去。Docker 內建的 DNS 會把服務名 redis 解析成 redis 容器的 IP；接在這個網路上的每個容器（包括 redis 自己）都查得到這個名字。',
     },
     {
       scene: [
@@ -71,8 +71,8 @@ export const serviceNameDns: Section = {
       scene: [
         {
           kind: 'table',
-          head: ['在哪裡', '在 myproj_default 網路上？'],
-          rows: [{ cells: ['web 容器', '是'] }, { cells: ['redis 容器自己', '是'] }, { cells: ['主機（你的終端機）', '否'] }],
+          head: ['在哪裡', '跑在什麼上面'],
+          rows: [{ cells: ['web 容器', 'Compose 服務'] }, { cells: ['redis 容器自己', 'Compose 服務'] }, { cells: ['主機（你的終端機）', '你的電腦本身'] }],
         },
       ],
       items: ['web 容器', 'redis 容器自己', '主機（你的終端機）'],

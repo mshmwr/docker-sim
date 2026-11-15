@@ -33,7 +33,7 @@ export const dependsOnHealthcheck: Section = {
             { text: '  db:' },
             { text: '    image: postgres:17' },
             { text: '    healthcheck:', tone: 'focus' },
-            { text: '      test: ["CMD-SHELL", "pg_isready -U postgres"]', note: '怎麼算健康' },
+            { text: '      test: ["CMD-SHELL", "pg_isready -U postgres -h 127.0.0.1"]', note: '怎麼算健康' },
             { text: '      interval: 5s', note: '多久檢查一次' },
             { text: '      retries: 5', note: '連續失敗幾次算 unhealthy' },
             { text: '      start_period: 10s', note: '啟動寬限期' },
@@ -65,7 +65,7 @@ export const dependsOnHealthcheck: Section = {
           label: '改好之後',
           events: [
             { at: '0s', text: 'db 容器啟動，健康狀態 starting' },
-            { at: '20s', text: 'pg_isready 通過，db 變成 healthy', tone: 'good' },
+            { at: '20s', text: 'pg_isready 透過 TCP 連上，db 變成 healthy', tone: 'good' },
             { at: '20s+', text: 'web 才啟動，第一次連線就成功', tone: 'good' },
           ],
         },
@@ -89,6 +89,6 @@ export const dependsOnHealthcheck: Section = {
       explain: '把 - db 這種簡寫改成 db: 底下加 condition: service_healthy。簡寫的意思是 service_started，只等容器啟動。',
     },
   ],
-  source: '教材 §6.2、§6.6 healthcheck',
+  source: '教材 §6.3、§6.6 healthcheck（pg_isready 加 -h 127.0.0.1 是避開初始化時只開 Unix socket 的暫時伺服器，為教材外補充）',
   verify: "K-Line 練習第 7 章 7-D：docker run --health-cmd 'exit 1' 後，docker inspect 看到 unhealthy。",
 };

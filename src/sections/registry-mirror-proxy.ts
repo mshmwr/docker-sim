@@ -4,8 +4,8 @@ export const registryMirrorProxy: Section = {
   id: 'registry-mirror-proxy',
   num: '5-3',
   chapter: 5,
-  title: '縮短下載：本機 registry、mirror、proxy',
-  concept: '瓶頸在網路時，就把 image 和套件放近一點：自架 registry、Docker Hub 鏡像、套件快取代理。',
+  title: '縮短下載：自架 registry、mirror、proxy',
+  concept: '瓶頸在網路時，就把 image 和套件放近一點：機房內的 registry、Docker Hub 鏡像、套件快取代理。',
   steps: [
     {
       scene: [
@@ -18,7 +18,7 @@ export const registryMirrorProxy: Section = {
         {
           kind: 'flow',
           label: '改用機房內的 registry',
-          nodes: [{ text: '10 台主機' }, { text: '本機 registry', note: '同一個區網', tone: 'good' }],
+          nodes: [{ text: '10 台主機' }, { text: '自架 registry', note: '同一個機房區網', tone: 'good' }],
           links: [{ text: 'push 約快 10 倍、pull 約快 30 倍', tone: 'good' }],
         },
       ],
@@ -33,7 +33,7 @@ export const registryMirrorProxy: Section = {
         },
         { kind: 'terminal', lines: [{ text: '$ sudo systemctl restart docker', note: '重啟 daemon 才生效' }] },
       ],
-      note: 'registry 鏡像（pull-through cache）是被動代理：第一次有人要某個 Docker Hub image，它去抓一次並存起來，之後全公司都從它拿。用 daemon.json 設定，別再用舊書的 --registry-mirror 啟動旗標。',
+      note: 'registry 鏡像（pull-through cache）是被動代理：第一次有人要某個 Docker Hub image，它去抓一次並存起來，之後全公司都從它拿。寫在 daemon.json，別再照舊書去改 systemd 加 --registry-mirror。',
     },
     {
       scene: [

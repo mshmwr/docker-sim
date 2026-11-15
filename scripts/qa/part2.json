@@ -259,8 +259,7 @@
         "order": [
           "checkout 程式碼",
           "build image",
-          "跑測試",
-          "掃描漏洞",
+          "跑測試、掃描漏洞",
           "push 到 registry"
         ]
       },

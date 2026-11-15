@@ -18,7 +18,7 @@ export const privateRegistry: Section = {
           ],
         },
       ],
-      note: '官方的 registry image 就是一座私有倉庫。舊教學用 registry:2，現在用穩定的 registry:3。image 存在容器裡的 /var/lib/registry，所以要掛 volume。',
+      note: '官方的 registry image 就是一座私有倉庫。舊教學用 registry:2，現在用穩定的 registry:3。image 存在 /var/lib/registry，掛一個具名 volume，容器重建時才接得回同一份資料。',
     },
     {
       scene: [
@@ -69,9 +69,9 @@ export const privateRegistry: Section = {
     {
       type: 'choice',
       prompt: 'registry:3 沒有掛 volume。push 了一個 image 之後 docker rm -f registry，再重新 docker run 一座。剛才的 image 還在嗎？',
-      options: ['還在，registry 會自動備份', '不在了，image 存在被刪掉的容器可寫層裡', '還在，只是要重新 login'],
+      options: ['還在，registry 會自動備份', '不在了，新容器拿到的是另一個全新的匿名 volume', '還在，只是要重新 login'],
       answer: 1,
-      explain: '沒掛 volume 時，/var/lib/registry 在容器的可寫層，容器一刪就跟著消失（1-3）。新的 registry 是空的。',
+      explain: 'registry image 宣告了 VOLUME /var/lib/registry，沒掛 volume 時 Docker 會自動建一個匿名 volume。rm -f 之後那個 volume 變成孤兒（沒被刪，但也沒人接手），新容器又拿到一個全新的空 volume，所以看起來 image 都不見了。用具名 volume 才接得回來。',
     },
     {
       type: 'choice',
@@ -81,5 +81,5 @@ export const privateRegistry: Section = {
       explain: 'Docker 預設要求 registry 走 HTTPS，只有 localhost 例外。可以把它加進 insecure-registries 繞過，但正解是設好 TLS。',
     },
   ],
-  source: '教材 §7.5、§7.7（HTTPS 預設要求與 insecure-registries 為教材外補充）',
+  source: '教材 §7.5、§7.7（匿名 volume 行為、HTTPS 預設要求與 insecure-registries 為教材外補充）',
 };
