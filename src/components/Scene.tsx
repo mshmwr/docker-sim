@@ -77,6 +77,24 @@ function LayerView({ layer }: { layer: Layer }) {
           ))}
         </div>
       );
+    case 'size-bar': {
+      const max = Math.max(...layer.items.map((it) => it.value));
+      return (
+        <div className="size-bars">
+          {layer.items.map((it, i) => (
+            <div key={i} className="size-row">
+              <div className="size-head">
+                <code>{it.text}</code>
+                <span className="size-shown">{it.shown}</span>
+              </div>
+              <div className="size-track">
+                <div className={`size-fill${tc(it.tone)}`} style={{ width: `${Math.max((it.value / max) * 100, 1.5)}%` }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
     case 'table':
       return (
         <table className="tbl">

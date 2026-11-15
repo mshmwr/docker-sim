@@ -16,7 +16,9 @@ export type Layer =
   | { kind: 'layers'; label?: string; items: Line[] }
   /** Nodes joined by arrows; `links[i]` labels the arrow from `nodes[i]` to `nodes[i + 1]`. */
   | { kind: 'flow'; label?: string; nodes: Line[]; links?: { text?: string; tone?: Tone }[] }
-  | { kind: 'table'; label?: string; head: string[]; rows: { cells: string[]; tone?: Tone }[] };
+  | { kind: 'table'; label?: string; head: string[]; rows: { cells: string[]; tone?: Tone }[] }
+  /** Horizontal bars sized by `value` relative to the largest; `shown` is the printed size. */
+  | { kind: 'size-bar'; label?: string; items: { text: string; value: number; shown: string; tone?: Tone }[] };
 
 export interface Step {
   scene: Layer[];

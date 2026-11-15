@@ -1,0 +1,297 @@
+[
+  {
+    "id": "dockerfile-instructions",
+    "steps": 5,
+    "q": [
+      {
+        "pick": [
+          "CMD [\"python\", \"app.py\"]"
+        ]
+      },
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "cmd-vs-entrypoint",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 2
+      }
+    ]
+  },
+  {
+    "id": "build-context-dockerignore",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "*.md"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "multi-stage",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "python:3.12-slim 的層",
+          "pip install 裝的套件",
+          "從階段一複製來的 dist"
+        ]
+      },
+      {
+        "choice": 0
+      }
+    ]
+  },
+  {
+    "id": "buildx-multiplatform",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "pick": [
+          "RUN npm install --no-save @rollup/rollup-linux-x64-musl"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "measure-then-optimize",
+    "steps": 4,
+    "q": [
+      {
+        "order": [
+          "調層順序、加 .dockerignore",
+          "multi-stage、裝與清寫在同一個 RUN",
+          "自架 registry、鏡像、快取代理"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "reorder-layers-ruby",
+    "steps": 5,
+    "q": [
+      {
+        "pick": [
+          "COPY . ."
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "registry-mirror-proxy",
+    "steps": 5,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "ghost-files",
+    "steps": 5,
+    "q": [
+      {
+        "pick": [
+          "RUN apt-get update"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "go-scratch",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "compose-declarative",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "⇥ports:"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "service-name-dns",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "web 容器",
+          "redis 容器自己"
+        ]
+      },
+      {
+        "pick": [
+          "DB_HOST=localhost"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "depends-on-healthcheck",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "pick": [
+          "- db"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "networks-expose-ports",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "web"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "env-override-profiles",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "compose-lifecycle",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "registry-prefix",
+    "steps": 3,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "pick": [
+          "registry.company.com/team/app:1.0"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "push-login-layers",
+    "steps": 4,
+    "q": [
+      {
+        "pick": [
+          "COPY . . 程式碼層"
+        ]
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "ci-gatekeeper",
+    "steps": 3,
+    "q": [
+      {
+        "order": [
+          "checkout 程式碼",
+          "build image",
+          "跑測試、掃描漏洞",
+          "push 到 registry"
+        ]
+      },
+      {
+        "pick": [
+          "    password: mypass123"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "private-registry",
+    "steps": 4,
+    "q": [
+      {
+        "choice": 1
+      },
+      {
+        "choice": 1
+      }
+    ]
+  },
+  {
+    "id": "registry-tls-auth",
+    "steps": 5,
+    "q": [
+      {
+        "choice": 0
+      },
+      {
+        "choice": 1
+      }
+    ]
+  }
+]
